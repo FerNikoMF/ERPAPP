@@ -6,35 +6,18 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder",
-    "build:win": "electron-builder --win",
-    "test": "echo \"No tests specified\" && exit 0"
-  },
-  "engines": {
-    "node": ">=16.0.0"
+    "dist": "electron-builder"
   },
   "build": {
     "appId": "uz.getter.erp.app",
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "FerNikoMF",
-        "repo": "ERPAPP"
-      }
-    ],
+    "publish": "always",
     "win": {
       "target": "nsis",
-      "icon": "./assets/icon.ico"
-    },
-    "nsis": {
-      "installerIcon": "./assets/icon.ico",
-      "uninstallerIcon": "./assets/icon.ico",
-      "installerHeaderIcon": "./assets/icon.ico"
+      "icon": "assets/icon.ico"
     }
   },
   "dependencies": {
-    "electron-updater": "^5.3.0",
-    "dotenv": "^16.0.3"
+    "electron-updater": "^5.3.0"
   },
   "devDependencies": {
     "electron": "^29.4.6",

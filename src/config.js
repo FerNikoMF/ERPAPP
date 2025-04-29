@@ -1,4 +1,3 @@
 module.exports = {
-    ALLOWED_URL: 'https://onef.uz'
-  };
-  
+  ALLOWED_URL: 'https://google.com' // твой сайт
+};
