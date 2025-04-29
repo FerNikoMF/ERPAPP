@@ -1,5 +1,11 @@
 const { app } = require('electron');
+const AutoLaunch = require('auto-launch');
 
-app.setLoginItemSettings({
-  openAtLogin: true
+const autoLauncher = new AutoLaunch({
+  name: 'ERP-App',
+  path: app.getPath('exe'),
 });
+
+autoLauncher.isEnabled().then((isEnabled) => {
+  if (!isEnabled) autoLauncher.enable();
+}).catch(console.error);

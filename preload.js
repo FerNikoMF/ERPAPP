@@ -1,3 +1,5 @@
-window.addEventListener('DOMContentLoaded', () => {
-  // Сюда можно добавить код если понадобится
+const { contextBridge } = require('electron');
+
+contextBridge.exposeInMainWorld('api', {
+  // добавьте свои методы для взаимодействия с сайтом
 });

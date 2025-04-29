@@ -1,11 +1,13 @@
-const { app, session } = require('electron');
+const { app } = require('electron');
 const { ALLOWED_URL } = require('./config');
 
-app.whenReady().then(() => {
-  session.defaultSession.webRequest.onBeforeRequest((details, callback) => {
-    if (!details.url.startsWith(ALLOWED_URL)) {
-      return callback({ cancel: true });
-    }
-    callback({});
+app.on('web-contents-created', (_, contents) => {
+  contents.on('will-navigate', (event, url) => {
+    if (!url.startsWith(ALLOWED_URL)) event.preventDefault();
+  });
+
+  contents.setWindowOpenHandler(({ url }) => {
+    if (!url.startsWith(ALLOWED_URL)) return { action: 'deny' };
+    return { action: 'allow' };
   });
 });
