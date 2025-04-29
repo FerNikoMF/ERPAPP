@@ -1,0 +1,32 @@
+{
+    "name": "erp-app",
+    "version": "1.0.0",
+    "description": "ERP app for a single site",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
+    },
+    "build": {
+        "appId": "uz.getter.erp.app",
+        "publish": [
+            {
+                "provider": "github",
+                "owner": "FerNikoMF",
+                "repo": "ERP-app"
+            }
+        ],
+        "win": {
+            "target": "nsis",
+            "icon": "assets/icon.ico"
+        }
+    },
+    "dependencies": {
+        "electron": "^29.4.6",
+        "electron-updater": "^6.6.2"
+    },
+    "devDependencies": {
+        "electron-builder": "^26.0.0"
+    }
+}

@@ -1,0 +1,49 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Electron build output
+dist/
+out/
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS system files
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Environment files (если используешь .env)
+.env
+.env.*
+
+# Electron-builder config/output
+build/*.pdb
+build/*.exe
+build/*.dll
+latest.yml
+*.blockmap
+
+# Logs
+*.log
+
+# OS junk
+*.swp
+*.swo
+*.tmp
+
+# GitHub Actions cache
+.cache/
+
+# Optional: если есть архивы или инсталляторы
+*.zip
+*.7z
+*.msi
+*.dmg
