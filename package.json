@@ -1,16 +1,21 @@
 {
   "name": "erp-app",
   "version": "1.0.0",
-  "description": "Electron erp app",
+  "description": "Electron ERP App",
   "author": "FerNikoMF",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "build:win": "electron-builder --win",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "build": {
     "appId": "uz.getter.erp.app",
-    "publish": "always", [
+    "publish": [
       {
         "provider": "github",
         "owner": "FerNikoMF",
@@ -19,11 +24,17 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "icon.ico"
+      "icon": "./assets/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "./assets/icon.ico",
+      "uninstallerIcon": "./assets/icon.ico",
+      "installerHeaderIcon": "./assets/icon.ico"
     }
   },
   "dependencies": {
-    "electron-updater": "^5.3.0"
+    "electron-updater": "^5.3.0",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "electron": "^29.4.6",
