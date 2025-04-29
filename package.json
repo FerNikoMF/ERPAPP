@@ -17,6 +17,7 @@
         "repo": "ERPAPP"
       }
     ],
+    "publishAutoUpdate": true
     "win": {
       "target": "nsis",
       "icon": "icon.ico"
