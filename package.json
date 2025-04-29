@@ -10,7 +10,7 @@
   },
   "build": {
     "appId": "uz.getter.erp.app",
-    "publish": [
+    "publish": "always", [
       {
         "provider": "github",
         "owner": "FerNikoMF",
