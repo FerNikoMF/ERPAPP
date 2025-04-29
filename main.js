@@ -2,9 +2,9 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const { ALLOWED_URL } = require('./src/config');
 
-require('./src/autostart');    // автозапуск
-require('./src/navigation');   // защита навигации
-require('./src/updater');      // логика обновлений
+require('./src/autostart');   
+require('./src/navigation');  
+require('./src/updater');     
 
 const { autoUpdater } = require('electron-updater');
 
@@ -12,9 +12,9 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    fullscreen: true, // 🔥 сразу в полный экран
-    frame: false,     // 🔥 без панели окна
-    kiosk: true,      // 🔒 не позволяет выйти из приложения
+    fullscreen: true, 
+    frame: false,     
+    kiosk: true,      
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -22,13 +22,24 @@ function createWindow() {
     }
   });
 
-  // Загружаем основной сайт
   mainWindow.loadURL(ALLOWED_URL);
 
-  // Убираем стандартное меню
   mainWindow.setMenu(null);
 
-  // Блокируем нежелательные переходы
+  // Масштабируем страницу на 90%
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.setZoomFactor(0.9);
+    // Скрываем скроллбары через CSS
+    mainWindow.webContents.insertCSS(`
+      ::-webkit-scrollbar {
+        display: none !important;
+      }
+      body {
+        overflow: hidden !important;
+      }
+    `);
+  });
+
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!url.startsWith(ALLOWED_URL)) event.preventDefault();
   });
@@ -37,12 +48,11 @@ function createWindow() {
     if (!url.startsWith(ALLOWED_URL)) event.preventDefault();
   });
 
-  // Проверка на обновления
   autoUpdater.checkForUpdatesAndNotify();
 }
 
 app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
-  app.quit(); // Полностью закрываем приложение
+  app.quit();
 });
