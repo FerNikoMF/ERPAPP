@@ -27,6 +27,7 @@ jobs:
         run: npm install -g electron-builder
 
       - name: Build and Publish
+        run: npm run dist
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run dist
+          NODE_OPTIONS: "--max-old-space-size=4096"
