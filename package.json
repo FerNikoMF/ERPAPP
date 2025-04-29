@@ -1,6 +1,6 @@
 {
   "name": "erp-app",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "Electron ERP App",
   "author": "FerNikoMF",
   "main": "main.js",
@@ -20,17 +20,22 @@
         "provider": "github",
         "owner": "FerNikoMF",
         "repo": "ERPAPP",
-        "releaseType": "release"
+        "releaseType": "release",
+        "publishAutoUpdate": true
       }
     ],
     "win": {
-      "target": "nsis",
+      "target": [
+        "nsis"
+      ],
       "icon": "./assets/icon.ico"
     },
     "nsis": {
       "installerIcon": "./assets/icon.ico",
       "uninstallerIcon": "./assets/icon.ico",
-      "installerHeaderIcon": "./assets/icon.ico"
+      "installerHeaderIcon": "./assets/icon.ico",
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false
     }
   },
   "dependencies": {
